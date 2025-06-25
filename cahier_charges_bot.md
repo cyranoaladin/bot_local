@@ -8,7 +8,7 @@
 ## 1. Objectif et contexte du projet
 
 Développer un bot de trading automatisé pour le token $COLLAT sur la blockchain Solana, fonctionnant **localement** sur poste utilisateur **sans recours à un VPS ou backend distant**.  
-Le bot doit effectuer des opérations de trading sur Raydium via le wallet de l’utilisateur (seed privée stockée localement et chiffrée), appliquer une stratégie de trading prédéfinie (paramétrable), et respecter le quota gratuit de l’API Helius.  
+Le bot doit effectuer des opérations de trading sur Raydium via le wallet de l’utilisateur (seed privée stockée localement et chiffrée), appliquer une stratégie de trading prédéfinie (paramétrable), et utiliser l’API Triton pour les données blockchain.
 Le système doit fonctionner même si l’interface graphique est fermée.
 
 ---
@@ -20,8 +20,8 @@ Le système doit fonctionner même si l’interface graphique est fermée.
 | **Adresse du token $COLLAT**        | C7heQqfNzdMbUFQwcHkL9FvdwsFsDRBnfwZDDyWYCLTZ            |
 | **Adresse du token USDC**           | EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v            |
 | **Adresse du pool Raydium**         | BtxxZetfDCpBfFJ4QVXh853BhzD4RgRKpwCXxzq1QmSM            |
-| **Clé API Helius**                  | d94d81dd-f2a1-40f7-920d-0dfaf3aaf032                    |
-| **Fréquence polling API**           | 10 minutes (conforme à l’offre gratuite Helius)         |
+| **Endpoint RPC Triton**             | https://kamel-solanam-876d.mainnet.rpcpool.com          |
+| **Fréquence polling API**           | 1 seconde (possible grâce au quota élevé Triton)         |
 | **Pourcentage vente (hausse)**      | 10 %                                                    |
 | **Pourcentage de tokens à vendre**  | 50 %                                                    |
 | **Pourcentage rachat (baisse)**     | 5 %                                                     |
@@ -53,12 +53,12 @@ Le système doit fonctionner même si l’interface graphique est fermée.
 - Utilisation de Solana web3.js et Raydium SDK.
 - Swap $COLLAT/USDC avec gestion du slippage (1.5% max).
 - Vérification et gestion du solde du wallet à chaque opération.
-- Récupération des prix via l’API Helius, fallback possible via RPC secondaire.
+- Récupération des prix via l’API Triton, fallback possible via RPC secondaire.
 
-### 3.4. Gestion API Helius
+### 3.4. Gestion API Triton
 
-- Fréquence des requêtes : 10 minutes minimum entre chaque polling (configurable).
-- Blocage automatique si la limite d’API gratuite est atteinte, reprise au rétablissement du quota.
+- Fréquence des requêtes : 1 seconde entre chaque polling par défaut.
+- Quota largement suffisant (150 requêtes/seconde), aucune restriction quotidienne.
 
 ### 3.5. Stratégie de trading
 
@@ -118,7 +118,7 @@ Le système doit fonctionner même si l’interface graphique est fermée.
 ## 7. Remarques et réserves
 
 - **Aucune donnée confidentielle (seed, clés, historique) ne doit jamais quitter le poste utilisateur.**
-- **Pas de stockage cloud, ni d’API distante autre que la blockchain/Raydium/Helius.**
+- **Pas de stockage cloud, ni d’API distante autre que la blockchain/Raydium/Triton.**
 - Le projet pourra évoluer vers une gestion multi-plateformes ou multi-tokens à moyen terme.
 
 ---

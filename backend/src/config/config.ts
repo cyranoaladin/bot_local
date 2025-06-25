@@ -70,7 +70,7 @@ const config: Config = {
   },
   solana: {
     rpcEndpoints: [
-      process.env.PRIMARY_RPC_ENDPOINT || 'https://api.mainnet-beta.solana.com',
+      process.env.PRIMARY_RPC_ENDPOINT || 'https://kamel-solanam-876d.mainnet.rpcpool.com',
       process.env.SECONDARY_RPC_ENDPOINT || 'https://rpc.triton.one',
     ],
     tokenInfo: {

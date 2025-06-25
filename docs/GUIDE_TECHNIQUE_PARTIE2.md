@@ -158,7 +158,7 @@ export class WalletService {
 
   constructor(walletConfig: { privateKey: string }) {
     // Initialiser la connexion à Solana
-    this.connection = new Connection('https://api.mainnet-beta.solana.com');
+    this.connection = new Connection('https://kamel-solanam-876d.mainnet.rpcpool.com');
     
     // Initialiser le keypair à partir de la clé privée
     // Dans un cas réel, la clé privée serait chiffrée et déchiffrée ici

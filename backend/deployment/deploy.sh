@@ -83,7 +83,7 @@ API_SECRET=$(openssl rand -hex 32)
 DATABASE_URL="postgresql://collat_bot:secure_password@localhost:5432/collat_bot?schema=public"
 
 # Solana RPC
-PRIMARY_RPC_ENDPOINT="https://mainnet.helius-rpc.com/?api-key=your_api_key_here"
+PRIMARY_RPC_ENDPOINT="https://kamel-solanam-876d.mainnet.rpcpool.com"
 SECONDARY_RPC_ENDPOINT="https://rpc.triton.one"
 
 # Wallet (IMPORTANT: Remplacer par votre clé privée chiffrée)
