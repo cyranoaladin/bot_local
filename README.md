@@ -317,14 +317,14 @@ L'application est configurée pour utiliser les endpoints RPC suivants:
 
 ```typescript
 export const RPC_ENDPOINTS = [
-  "https://mainnet.helius-rpc.com/?api-key=d94d81dd-f2a1-40f7-920d-0dfaf3aaf032",
+  "https://kamel-solanam-876d.mainnet.rpcpool.com",
   "https://rpc.triton.one"
 ];
 
 export const PRIMARY_RPC_ENDPOINT = RPC_ENDPOINTS[0];
 ```
 
-Le premier endpoint (Helius) est utilisé par défaut, avec Triton comme fallback.
+Le premier endpoint (Triton via RPCPool) est utilisé par défaut, avec `rpc.triton.one` comme fallback.
 
 ## Sécurité
 

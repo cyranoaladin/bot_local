@@ -23,7 +23,7 @@ export const TOKEN_INFO = {
 export const TEST_WALLET = "FKxNTsxE83WwGSqLs7o6mWYPaZybZPFgKr3B7m7x2qxf";
 
 export const RPC_ENDPOINTS = [
-  "https://mainnet.helius-rpc.com/?api-key=d94d81dd-f2a1-40f7-920d-0dfaf3aaf032",
+  "https://kamel-solanam-876d.mainnet.rpcpool.com",
   "https://rpc.triton.one"
 ];
 

@@ -8,7 +8,7 @@
  * - Fonctionne localement sur Linux Mint sans VPS
  * - Stocke la phrase de récupération du wallet avec chiffrement AES-256-GCM
  * - Fonctionne en arrière-plan indépendamment du GUI
- * - Utilise l'API Helius avec intervalle de 10 minutes (tier gratuit)
+ * - Utilise l'API Triton avec un intervalle réduit (1 seconde par défaut)
  * - Implémente la stratégie de trading spécifiée
  */
 
@@ -42,8 +42,8 @@ const CONFIG = {
   // Répertoire de stockage sécurisé
   STORAGE_DIR: path.join(os.homedir(), '.collat-bot'),
   
-  // Intervalle de polling (10 minutes selon les spécifications)
-  POLLING_INTERVAL: 10 * 60 * 1000
+  // Intervalle de polling par défaut (1 seconde)
+  POLLING_INTERVAL: 1000
 };
 
 // Vérifier que le répertoire de stockage existe
@@ -157,9 +157,9 @@ async function main() {
     if (config && config.pollingInterval) {
       const intervalMinutes = config.pollingInterval;
       logger.info(`Intervalle de polling configuré: ${intervalMinutes} minutes`);
-      tradingService.setApiParameters(intervalMinutes, 100); // 100 appels par jour max (limite Helius gratuit)
+      tradingService.setApiParameters(intervalMinutes, Number.MAX_SAFE_INTEGER);
     } else {
-      logger.info(`Intervalle de polling par défaut: ${CONFIG.POLLING_INTERVAL / 60000} minutes`);
+      logger.info(`Intervalle de polling par défaut: ${CONFIG.POLLING_INTERVAL / 1000} seconde(s)`);
     }
     
     logger.info('Bot de trading $COLLAT initialisé avec succès');

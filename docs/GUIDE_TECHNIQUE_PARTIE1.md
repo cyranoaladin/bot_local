@@ -171,7 +171,7 @@ export const config = {
   
   // Configuration RPC Solana
   rpc: {
-    primaryEndpoint: process.env.PRIMARY_RPC_ENDPOINT || 'https://api.mainnet-beta.solana.com',
+    primaryEndpoint: process.env.PRIMARY_RPC_ENDPOINT || 'https://kamel-solanam-876d.mainnet.rpcpool.com',
     secondaryEndpoint: process.env.SECONDARY_RPC_ENDPOINT || 'https://rpc.triton.one',
   },
   

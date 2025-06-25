@@ -41,8 +41,8 @@ class TradingService {
   private connection: Connection;
   private masterPassword: string | null = null;
   private lastApiCallTime: number = 0;
-  private apiCallInterval: number = 10 * 60 * 1000; // 10 minutes en millisecondes par défaut
-  private maxApiCallsPerDay: number = 100; // Limite pour l'API Helius gratuite
+  private apiCallInterval: number = 1000; // 1 seconde par défaut
+  private maxApiCallsPerDay: number = Number.MAX_SAFE_INTEGER; // Quota élevé avec Triton
   private apiCallCount: number = 0;
   private apiCallCountResetTime: number = 0;
 
@@ -177,7 +177,7 @@ class TradingService {
       // Sauvegarder l'état du bot
       this.saveBotState();
       
-      // Exécuter l'algorithme de trading périodiquement (toutes les 10 minutes)
+      // Exécuter l'algorithme de trading périodiquement (toutes les secondes)
       this.tradingInterval = setInterval(() => this.runTradingAlgorithm(), this.apiCallInterval);
       
       return true;

@@ -56,7 +56,7 @@ Vous pouvez configurer les endpoints RPC Solana utilisés par le bot :
 1. Endpoint primaire : Utilisé par défaut pour toutes les opérations
 2. Endpoint secondaire : Utilisé en cas d'échec de l'endpoint primaire
 
-Il est recommandé d'utiliser un endpoint RPC payant comme Helius pour une meilleure fiabilité.
+Il est recommandé d'utiliser un endpoint RPC fiable comme Triton pour de meilleures performances.
 
 ### Notifications
 

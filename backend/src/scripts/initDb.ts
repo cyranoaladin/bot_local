@@ -22,7 +22,7 @@ async function initializeDatabase() {
           slippageTolerance: 1.5,
           maxTransactionPercentage: 50.0,
           rpcEndpoints: JSON.stringify([
-            "https://mainnet.helius-rpc.com/?api-key=your_api_key_here",
+            "https://kamel-solanam-876d.mainnet.rpcpool.com",
             "https://rpc.triton.one"
           ])
         }

@@ -22,7 +22,7 @@ class WalletService {
   private seedPhrase: string | null = null;
   private isInitialized: boolean = false;
   private lastApiCallTime: number = 0;
-  private apiCallInterval: number = 10 * 60 * 1000; // 10 minutes en millisecondes
+  private apiCallInterval: number = 1000; // 1 seconde
   private masterPassword: string | null = null;
 
   constructor() {
