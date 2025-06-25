@@ -66,7 +66,7 @@ echo "Pour accéder au dashboard, ouvrez http://localhost:3000 dans votre naviga
 echo "Le bot continuera à fonctionner même si vous fermez le navigateur."
 echo ""
 echo "Statut de la connexion WebSocket:"
-echo "- Le WebSocket est actif sur http://localhost:5000"
+echo "- Le WebSocket est actif sur http://localhost:3001"
 echo "- Les mises à jour en temps réel seront visibles dans le dashboard"
 echo ""
 echo "Commandes utiles:"

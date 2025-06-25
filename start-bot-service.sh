@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Chemin vers le répertoire du projet
-PROJECT_DIR="/home/alaeddine/Documents/bot_collat_local"
+PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 LOG_FILE="$PROJECT_DIR/bot.log"
 
 echo "Démarrage du service bot de trading $COLLAT en arrière-plan"
