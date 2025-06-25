@@ -1,0 +1,18 @@
+[Unit]
+Description=COLLAT Trading Bot Service
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/home/ubuntu/bot_collat/backend
+ExecStart=/usr/bin/node dist/app.js
+Restart=on-failure
+RestartSec=10
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=collat-bot
+Environment=NODE_ENV=production
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,58 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:../data/collat_bot.db"
+}
+
+model Configuration {
+  id                       Int      @id @default(autoincrement())
+  sellThreshold            Float    @default(10.0)
+  buyThreshold             Float    @default(5.0)
+  slippageTolerance        Float    @default(1.5)
+  maxTransactionPercentage Float    @default(50.0)
+  rpcEndpoints             Json     @default("[]")
+  createdAt                DateTime @default(now())
+  updatedAt                DateTime @updatedAt
+}
+
+model Transaction {
+  id           Int      @id @default(autoincrement())
+  type         String
+  tokenAmount  Decimal
+  tokenPrice   Decimal
+  usdcAmount   Decimal
+  txHash       String?
+  status       String
+  errorMessage String?
+  timestamp    DateTime @default(now())
+}
+
+model PortfolioSnapshot {
+  id             Int      @id @default(autoincrement())
+  timestamp      DateTime @default(now())
+  collatBalance  Decimal
+  usdcBalance    Decimal
+  solBalance     Decimal
+  totalValueUsdc Decimal
+  profitLoss     Decimal?
+}
+
+model SystemLog {
+  id        Int      @id @default(autoincrement())
+  level     String
+  message   String
+  context   Json?
+  timestamp DateTime @default(now())
+}
+
+model BotState {
+  id              Int       @id @default(autoincrement())
+  isActive        Boolean   @default(false)
+  entryPrice      Decimal?
+  currentPrice    Decimal?
+  lastTransaction DateTime?
+  lastUpdated     DateTime  @default(now())
+}
