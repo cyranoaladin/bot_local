@@ -42,8 +42,8 @@ const CONFIG = {
   // Répertoire de stockage sécurisé
   STORAGE_DIR: path.join(os.homedir(), '.collat-bot'),
   
-  // Intervalle de polling par défaut (1 seconde)
-  POLLING_INTERVAL: 1000
+  // Intervalle de polling configurable (ms)
+  POLLING_INTERVAL: parseInt(process.env.API_CALL_INTERVAL_MS || '1000', 10)
 };
 
 // Vérifier que le répertoire de stockage existe
@@ -157,9 +157,10 @@ async function main() {
     if (config && config.pollingInterval) {
       const intervalMinutes = config.pollingInterval;
       logger.info(`Intervalle de polling configuré: ${intervalMinutes} minutes`);
-      tradingService.setApiParameters(intervalMinutes, Number.MAX_SAFE_INTEGER);
+      tradingService.setApiParameters(intervalMinutes * 60 * 1000, Number.MAX_SAFE_INTEGER);
     } else {
-      logger.info(`Intervalle de polling par défaut: ${CONFIG.POLLING_INTERVAL / 1000} seconde(s)`);
+      logger.info(`Intervalle de polling par défaut: ${CONFIG.POLLING_INTERVAL} ms`);
+      tradingService.setApiParameters(CONFIG.POLLING_INTERVAL, Number.MAX_SAFE_INTEGER);
     }
     
     logger.info('Bot de trading $COLLAT initialisé avec succès');

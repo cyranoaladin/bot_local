@@ -37,6 +37,10 @@ interface Config {
     slippageTolerance: number;
     maxTransactionPercentage: number;
   };
+  api: {
+    callIntervalMs: number;
+    maxCallsPerDay: number;
+  };
   notifications: {
     telegram: {
       botToken: string;
@@ -94,6 +98,10 @@ const config: Config = {
     buyThreshold: parseFloat(process.env.BUY_THRESHOLD || '5'),
     slippageTolerance: parseFloat(process.env.SLIPPAGE_TOLERANCE || '1.5'),
     maxTransactionPercentage: parseFloat(process.env.MAX_TRANSACTION_PERCENTAGE || '50'),
+  },
+  api: {
+    callIntervalMs: parseInt(process.env.API_CALL_INTERVAL_MS || '1000', 10),
+    maxCallsPerDay: parseInt(process.env.MAX_API_CALLS_PER_DAY || String(Number.MAX_SAFE_INTEGER), 10),
   },
   notifications: {
     telegram: {

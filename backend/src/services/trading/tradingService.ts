@@ -41,13 +41,16 @@ class TradingService {
   private connection: Connection;
   private masterPassword: string | null = null;
   private lastApiCallTime: number = 0;
-  private apiCallInterval: number = 1000; // 1 seconde par défaut
+  // Intervalle d'appel API en millisecondes
+  private apiCallInterval: number = 1000;
   private maxApiCallsPerDay: number = Number.MAX_SAFE_INTEGER; // Quota élevé avec Triton
   private apiCallCount: number = 0;
   private apiCallCountResetTime: number = 0;
 
   constructor() {
     this.connection = new Connection(config.solana.rpcEndpoints[0], 'confirmed');
+    this.apiCallInterval = config.api.callIntervalMs;
+    this.maxApiCallsPerDay = config.api.maxCallsPerDay;
     this.apiCallCountResetTime = Date.now() + 24 * 60 * 60 * 1000; // Réinitialiser le compteur après 24h
     this.loadBotState();
   }
@@ -742,7 +745,7 @@ class TradingService {
         dailyCallsUsed: this.apiCallCount,
         dailyCallsLimit: this.maxApiCallsPerDay,
         nextResetTime: new Date(this.apiCallCountResetTime).toISOString(),
-        callInterval: this.apiCallInterval / (60 * 1000) // Convertir en minutes
+        callInterval: this.apiCallInterval / 1000 // Intervalle en secondes
       };
       
       return {
@@ -797,7 +800,7 @@ class TradingService {
           dailyCallsUsed: 0,
           dailyCallsLimit: this.maxApiCallsPerDay,
           nextResetTime: new Date().toISOString(),
-          callInterval: this.apiCallInterval / (60 * 1000)
+          callInterval: this.apiCallInterval / 1000
         },
         walletStatus: {
           isConfigured: false,
@@ -811,13 +814,15 @@ class TradingService {
   /**
    * Configure les paramètres de l'API
    */
-  public setApiParameters(intervalMinutes: number, maxCallsPerDay: number): void {
-    this.apiCallInterval = intervalMinutes * 60 * 1000;
+  public setApiParameters(intervalMs: number, maxCallsPerDay: number): void {
+    this.apiCallInterval = intervalMs;
     this.maxApiCallsPerDay = maxCallsPerDay;
-    logger.info(`API parameters updated: interval=${intervalMinutes}min, maxCalls=${maxCallsPerDay}/day`);
-    
+    logger.info(
+      `API parameters updated: interval=${intervalMs}ms, maxCalls=${maxCallsPerDay}/day`
+    );
+
     // Mettre à jour également l'intervalle dans le service de portefeuille
-    walletService.setApiCallInterval(intervalMinutes);
+    walletService.setApiCallIntervalMs(intervalMs);
     
     // Sauvegarder l'état du bot
     this.saveBotState();

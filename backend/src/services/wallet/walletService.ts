@@ -29,6 +29,7 @@ class WalletService {
     this.primaryEndpoint = config.solana.rpcEndpoints[0];
     this.secondaryEndpoint = config.solana.rpcEndpoints[1];
     this.connection = new Connection(this.primaryEndpoint, 'confirmed');
+    this.apiCallInterval = config.api.callIntervalMs;
   }
 
   /**
@@ -397,9 +398,9 @@ class WalletService {
   /**
    * Définit l'intervalle d'appel API
    */
-  public setApiCallInterval(intervalMinutes: number): void {
-    this.apiCallInterval = intervalMinutes * 60 * 1000;
-    logger.info(`API call interval set to ${intervalMinutes} minutes`);
+  public setApiCallIntervalMs(intervalMs: number): void {
+    this.apiCallInterval = intervalMs;
+    logger.info(`API call interval set to ${intervalMs} ms`);
   }
 
   /**

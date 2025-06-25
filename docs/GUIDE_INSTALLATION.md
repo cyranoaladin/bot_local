@@ -80,6 +80,8 @@ SELL_THRESHOLD=10
 BUY_THRESHOLD=5
 SLIPPAGE_TOLERANCE=1.5
 MAX_TRANSACTION_PERCENTAGE=50
+API_CALL_INTERVAL_MS=1000
+MAX_API_CALLS_PER_DAY=8640000
 
 # Notifications
 TELEGRAM_BOT_TOKEN=votre_token_bot_telegram
@@ -154,6 +156,8 @@ La configuration du bot peut être modifiée via l'interface d'administration ou
 | BUY_THRESHOLD | Pourcentage de diminution du prix qui déclenche un achat | 5 |
 | SLIPPAGE_TOLERANCE | Pourcentage maximum de slippage accepté | 1.5 |
 | MAX_TRANSACTION_PERCENTAGE | Pourcentage maximum des avoirs à utiliser par transaction | 50 |
+| API_CALL_INTERVAL_MS | Intervalle entre deux appels API en millisecondes | 1000 |
+| MAX_API_CALLS_PER_DAY | Nombre maximal d'appels API par jour | 8640000 |
 
 ### Configuration des Notifications
 
