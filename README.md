@@ -274,6 +274,8 @@ export const DEFAULT_CONFIG = {
 };
 ```
 
+La fréquence des appels API peut être ajustée via la variable `API_CALL_INTERVAL_MS`. Par défaut elle vaut `1000` (1 seconde). Le quota quotidien se règle avec `MAX_API_CALLS_PER_DAY`.
+
 ### Informations sur les tokens
 ```typescript
 export const TOKEN_INFO = {

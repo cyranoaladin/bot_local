@@ -186,6 +186,8 @@ export const config = {
     buyThreshold: parseFloat(process.env.BUY_THRESHOLD || '5'),
     slippageTolerance: parseFloat(process.env.SLIPPAGE_TOLERANCE || '1.5'),
     maxTransactionPercentage: parseFloat(process.env.MAX_TRANSACTION_PERCENTAGE || '50'),
+    callIntervalMs: parseInt(process.env.API_CALL_INTERVAL_MS || '1000', 10),
+    maxCallsPerDay: parseInt(process.env.MAX_API_CALLS_PER_DAY || '8640000', 10),
     tokens: {
       collat: {
         address: 'C7heQqfNzdMbUFQwcHkL9FvdwsFsDRBnfwZDDyWYCLTZ',
