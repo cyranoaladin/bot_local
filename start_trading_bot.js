@@ -61,7 +61,7 @@ async function main() {
   try {
     // Vérifier si le backend est accessible (pour le WebSocket)
     try {
-      const response = await fetch('http://localhost:5000/api/health');
+      const response = await fetch('http://localhost:3001/api/health');
       if (response.ok) {
         logger.info('Backend détecté et fonctionnel. WebSocket disponible.');
       } else {
@@ -90,7 +90,7 @@ async function main() {
           timestamp: new Date().toISOString()
         };
         // Utiliser le backend pour diffuser la notification
-        await fetch('http://localhost:5000/api/notifications', {
+        await fetch('http://localhost:3001/api/notifications', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(notification)
@@ -115,7 +115,7 @@ async function main() {
           timestamp: new Date().toISOString()
         };
         // Utiliser le backend pour diffuser la notification
-        await fetch('http://localhost:5000/api/notifications', {
+        await fetch('http://localhost:3001/api/notifications', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(notification)

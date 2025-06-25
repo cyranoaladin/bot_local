@@ -63,7 +63,10 @@ const config: Config = {
     apiSecret: process.env.API_SECRET || 'default_secret_key_change_in_production',
   },
   database: {
-    url: process.env.DATABASE_URL || 'postgresql://username:password@localhost:5432/collat_bot?schema=public',
+    // Use SQLite by default to match Prisma schema
+    url:
+      process.env.DATABASE_URL ||
+      `file:${path.resolve(__dirname, '../data/collat_bot.db')}`,
   },
   solana: {
     rpcEndpoints: [

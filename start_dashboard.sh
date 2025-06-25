@@ -21,5 +21,5 @@ fi
 
 # Démarrer le serveur frontend
 echo "Démarrage du dashboard $COLLAT..."
-echo "Accédez au dashboard à l'adresse: http://localhost:5000"
-serve -s dist -l 5000
+echo "Accédez au dashboard à l'adresse: http://localhost:3000"
+serve -s dist -l 3000
